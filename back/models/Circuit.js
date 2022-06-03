@@ -21,6 +21,9 @@ const CircuitSchema = new mongoose.Schema(
     visitors: {
       type: Number,
     },
+    title:{
+      type: String,
+    },
     place: {
         type: String,
       },

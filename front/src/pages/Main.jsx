@@ -7,6 +7,7 @@ import {RiHomeLine} from "react-icons/ri"
  import {BiUserCircle} from "react-icons/bi"
 import {VscCircuitBoard} from "react-icons/vsc"
 import {FiActivity} from "react-icons/fi"
+import {GoGistSecret} from "react-icons/go"
 import {HiLocationMarker} from "react-icons/hi"
 import Acceuil from "../sections/Acceuil";
 // import Cartes from "../sections/Cartes";
@@ -15,9 +16,11 @@ import Activite from "../sections/Activite";
 
 import Cartes from "../sections/Cartes";
 import Test from "../sections/Test";
+import Employes from "../sections/Employes";
 //AIzaSyAXKllRijHsY36D-Qhb503w4EeQ7SioLAI
 
 function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits}){
+   
     const navigate = useNavigate();
     const [openTab, setOpenTab] = React.useState(1);
     const [section, setSection] = React.useState("Acceuil");
@@ -60,16 +63,16 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
                                 data-toggle="tab"
                                 href="#link3"
                                 role="tablist" className="flex items-center">  <VscCircuitBoard  className="mr-3"/><span>Circuits</span></a></li>
-
+                 {userConnected.admin && 
                     <li className={openTab==4? "text-[#000] w-full cursor-pointer flex items-center justify-center text-2xl py-5 border-l-8 border-[#000]":"cursor-pointer flex items-center justify-center text-2xl py-5"}>
                                                 <a    onClick={e => {
                                     e.preventDefault();
-                                    setSection("Activité")
+                                    setSection("Gestion des Employés")
                                     setOpenTab(4);
                                 }}
                                 data-toggle="tab"
                                 href="#link4"
-                                role="tablist" className="flex items-center">  <FiActivity  className="mr-3"/><span>Activité</span></a></li>
+                                role="tablist" className="flex items-center">  <GoGistSecret  className="mr-3"/><span>Employés</span></a></li>}
 
                             </ul>
                             
@@ -96,13 +99,14 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
                    <Cartes/>
                     </div>
                     <div className={openTab === 3 ? "block w-full h-full " : "hidden"} id="link3">
-                    <Circuits staticCircuits={staticCircuits} setStaticCircuits={setStaticCircuits}/>
+                    <Circuits userConnected={userConnected} staticCircuits={staticCircuits} setStaticCircuits={setStaticCircuits}/>
                     </div>
-                    <div className={openTab === 4 ? "block " : "hidden"} id="link4">
+                    {userConnected.admin &&  <div className={openTab === 4 ? "block " : "hidden"} id="link4">
                     {/* <Activite /> */}
-                    <Test/>
+                    <Employes/>
 
-                    </div>
+                    </div>}
+                   
                 </div>
                 </div>
         </div>

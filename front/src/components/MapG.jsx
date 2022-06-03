@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 
-// import Tooltip from './components/Tooltip';
+import Tooltip from './components/Tooltip';
 import ReactDOM from 'react-dom';
 
 mapboxgl.accessToken =
@@ -40,7 +40,7 @@ const MapG = () => {
 
         // Create tooltip node
         const tooltipNode = document.createElement('div');
-        // ReactDOM.render(<Tooltip feature={feature} />, tooltipNode);
+        ReactDOM.render(<Tooltip feature={feature} />, tooltipNode);
 
         // Set tooltip on map
         tooltipRef.current

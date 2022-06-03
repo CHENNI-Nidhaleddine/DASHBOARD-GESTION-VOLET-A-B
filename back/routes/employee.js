@@ -1,6 +1,8 @@
 const Employee = require("../models/Employee");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const { ALLOWED_EXTENSIONS } = require("@discordjs/rest");
+
 
 //REGISTER
 
@@ -17,6 +19,8 @@ router.post("/register", async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
+      admin: req.body.admin,
+      wilaya: req.body.wilaya,
       password: hashedPassword,
     });
 
@@ -50,4 +54,51 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/getAll", async (req, res) => {
+  try {
+    //find circuits
+    const Employees = await Employee.find();
+
+    //send response
+    res.status(200).json({Employees: Employees });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/delete/:id",async (req,res)=>{
+  try {
+  await Employee.findByIdAndDelete(req.params.id)
+  }catch(err){
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
+
+
+// {
+     
+//   "place":"Wahran",
+//   "type":"Historique",
+//   "duration":"10 jours",
+//  "visitors": 20, 
+//  "markers": [
+//     {
+//       "lat":30.553208,
+//       "lng":76.177533
+//     },
+//     {
+//       "lat":36.189246,
+//       "lng":55.402176
+//    },
+//         {
+//       "lat":30.553208,
+//       "lng":76.177533
+//     },
+//      {
+//       "lat":30.553208,
+//       "lng":76.177533
+//     }
+//   ]
+// }

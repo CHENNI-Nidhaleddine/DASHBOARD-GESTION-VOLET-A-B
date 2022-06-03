@@ -8,19 +8,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import {GrAdd} from "react-icons/gr"
 import axios from "axios";
 import StaticCircuits from "../components/StaticCircuits";
+import {MdRemoveCircle} from "react-icons/md"
 
 
 
  
 
-function Circuits(){
+function Circuits({userConnected}){
   // const [staticCircuits,setStaticCircuits]=useState(null)
 
   const [staticCircuits,setStaticCircuits]=useState(null)
   const getCircuits=async ()=>{
     const res=await axios.get("/circuits/getAll")
     setStaticCircuits(res.data.Circuits)
-    console.log(staticCircuits)
+   
   }
   useEffect(()=>{
     try {
@@ -105,8 +106,13 @@ function Circuits(){
     }
 
   ])
+  const deleteCircuit=async ({id})=>{
+     console.log("/circuits/delete/"+id)
+      await axios.delete(`/circuits/delete/${id}`)
+  }
     const [showStatic,setShowStatic]=useState(true)
     const [number,setNumber]=useState("")
+    const [done,setDone]=useState(false)
     const [center,setCenter]=useState(  
     //  [ {
     //   lng:5.4108,
@@ -131,8 +137,20 @@ function Circuits(){
        
       
       <GoogleMap  zoom={12} center={center[0]} mapContainerClassName="w-full h-full" >
+      {!userConnected.admin && staticCircuits && staticCircuits.map((circuit,index)=>{
+        
+        if(!done && circuit.place.toUpperCase()===userConnected.wilaya.toUpperCase()){
+          setCenter(circuit.markers);
+          setDone(true)
+          setNumber(index)
+        }
+
+      })}
+    
+
       {
-      
+   
+        
       center.map((center,index)=>{return( <Marker key={index} position={center} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}/>)})}
       
     <div className="absolute flex items-center justify-start  w-fit h-fit top-3 left-52">
@@ -154,38 +172,83 @@ function Circuits(){
             </button>}
            {showStatic? 
           //  <StaticCircuits circuits={circuits} center={center} setCenter={setCenter} />
-          <div className="absolute flex items-center justify-start   z-50 w-[calc(97%)]  bottom-5  px-5  " >
-          <div className="border-dashed border-4 border-[#2400ff] relative  flex flex-col items-center justify-center bg-gradient-to-b from-[#45b6fe] to-[#fff] z-50  w-[calc(200px)] h-[calc(200px)] mx-5 rounded-xl shadow-2xl">
+         <div className="absolute flex items-center justify-start   z-50 w-[calc(97%)]  bottom-5  px-5  " >
+         {!userConnected.admin &&  <div className="border-dashed border-4 border-[#2400ff] relative  flex flex-col items-center justify-center bg-gradient-to-b from-[#45b6fe] to-[#fff] z-50  w-[calc(200px)] h-[calc(200px)] mx-5 rounded-xl shadow-2xl">
             <GrAdd className="relative text-5xl text-[#2400ff] bottom-5"/>
             <button className=" absolute bottom-3 bg-[#2400FF] text-[#fff] text-xl w-5/6 py-1 rounded-xl">Ajouter</button>
-          </div>
-          <div className="w-5/6 flex justify-start  ">
+          </div>}
+          <div className={ userConnected.admin? "w-full":"w-5/6   "}>
           <Swiper watchSlidesProgress={true} slidesPerView={4} className="mySwiper "  >
-          { staticCircuits && staticCircuits.map((circuit,index)=>{
+          { userConnected.admin && staticCircuits && staticCircuits.map((circuit,index)=>{
+            console.log(index)
+                // if(index==0) setCenter(circuit.markers)
                 return (
-                 <SwiperSlide key={circuit.id}
+                 <SwiperSlide key={index}
                  
                  onClick={()=>{
+                   console.log(typeof(circuit._id))
                   setCenter(circuit.markers);
                   setNumber(index)
+             
                  }}
-                  className= 
-                    "relative z-50  mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center"
+                  className= "relative z-50  mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center"
                   >
                 <div className={number==index?
                 " border-4 border-[#2400ff] relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(200px)] h-[calc(200px)] mx-5 rounded-xl shadow-2xl  "
                :" border-4 border-[#2400ff] opacity-90 relative flex flex-col items-center justify-left bg-gradient-to-b from-[#45b6fe] to-[#fff] z-50  w-[calc(200px)] h-[calc(200px)] mx-5 rounded-xl shadow-2xl  "
+              
                 }
                 >
+                  <div onClick={()=>{
+                    var id=circuit._id;
+                    deleteCircuit({id})}
+                    } className="absolute top-1 right-1 z-50 hover:text-[#f00] text-[#00f] "><MdRemoveCircle/></div>
                    <div className="flex flex-col p-5 self-start">
-                   <h1 className="font-bold text-2xl  relative z-50">{circuit.place}</h1>
+                   <h1 className="font-bold text-2xl  relative z-50">{circuit.title}</h1>
                    <p className=" text-lg text-[#6B7280]">{circuit.type}</p>
                    <p className=" text-lg text-[#6B7280]">{circuit.duration}</p>
                    <p className=" text-lg text-[#6B7280]">{circuit.visitors} visteurs</p>
                    </div>
                    <button className=" absolute bottom-3 bg-[#2400FF] text-[#fff] text-xl w-5/6 py-1 rounded-xl">Modifier</button>
                  </div>
-                </SwiperSlide>)
+                </SwiperSlide>)})}
+                
+                { !userConnected.admin && staticCircuits && staticCircuits.map((circuit,index)=>{
+                  
+                  if(circuit.place.toUpperCase()===userConnected.wilaya.toUpperCase()){
+                   
+                    return (
+                      <SwiperSlide key={index}
+                      
+                      onClick={()=>{
+                   
+                       setCenter(circuit.markers);
+                       setNumber(index)
+                  
+                      }}
+                       className= 
+                         "relative z-50  mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center"
+                       >
+                     <div className={number==index?
+                     " border-4 border-[#2400ff] relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(200px)] h-[calc(200px)] mx-5 rounded-xl shadow-2xl  "
+                    :" border-4 border-[#2400ff] opacity-90 relative flex flex-col items-center justify-left bg-gradient-to-b from-[#45b6fe] to-[#fff] z-50  w-[calc(200px)] h-[calc(200px)] mx-5 rounded-xl shadow-2xl  "
+                     }
+                     >
+                       <div onClick={()=>{
+                         var id=circuit._id;
+                         deleteCircuit({id})}
+                         } className="absolute top-1 right-1 z-50 hover:text-[#f00] text-[#00f] "><MdRemoveCircle/></div>
+                        <div className="flex flex-col p-5 self-start">
+                        <h1 className="font-bold text-2xl  relative z-50">{circuit.title}</h1>
+                        <p className=" text-lg text-[#6B7280]">{circuit.type}</p>
+                        <p className=" text-lg text-[#6B7280]">{circuit.duration}</p>
+                        <p className=" text-lg text-[#6B7280]">{circuit.visitors} visteurs</p>
+                        </div>
+                        <button className=" absolute bottom-3 bg-[#2400FF] text-[#fff] text-xl w-5/6 py-1 rounded-xl">Modifier</button>
+                      </div>
+                     </SwiperSlide>)
+                  }
+                
           })} 
                <SwiperSlide className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className="  relative flex flex-col items-center justify-left  z-50  w-[calc(200px)] h-[calc(200px)] mx-5   ">

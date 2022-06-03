@@ -32,38 +32,38 @@ function Connect({setUserConnected,myStorage}){
         <div className="w-1/3 h-screen bg-[#fff] flex flex-col items-center justify-between py-12">
             <div><img src={logo} className="w-16 h-20" alt=""/></div>
            <div className="flex flex-col items-center justify-center w-full">
-           <h1 className="font-bold text-5xl mb-5">Login</h1>
-           <h2 className=" text-2xl text-[#8C8B8B] mb-8">Login to your account</h2>
+           <h1 className="font-bold text-5xl mb-5">Se connecter</h1>
+           <h2 className=" text-2xl text-[#8C8B8B] mb-8">Connectez-vous à votre compte</h2>
            <form action="" className="w-full flex flex-col items-center justify-center text-xl " onSubmit={handleSubmit}>
                <div className="w-5/6 mb-3">
                <input className="rounded w-full outline-none border-2 border-[#C4C4C4] p-4" type="email" placeholder="Email" ref={emailRef}/>
                </div>
                <div className=" relative w-5/6 mb-1">
-               <input className="rounded  w-full outline-none border-2 border-[#C4C4C4] p-4 pr-12" type={visible? "text":"password"} placeholder="Password" ref={passwordRef}/>
+               <input className="rounded  w-full outline-none border-2 border-[#C4C4C4] p-4 pr-12" type={visible? "text":"password"} placeholder="Mot de passe" ref={passwordRef}/>
                <button className=" absolute right-4 top-4 text-[#c4c4c4] text-3xl" onClick={(e)=>{
                    e.preventDefault()
                    setVisible(!visible)}
                    }>{visible? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</button>
                </div>
                <div  className=" w-5/6 flex items-right justify-end mb-8 ">
-               <h2 className=" w-fit text-sm">forgot password?</h2>
+               <h2 className=" w-fit text-sm">mot de passe oublié ?</h2>
                </div>
                <div className="w-5/6 mb-3">
-                   <input  className="font-bold text-[#fff] rounded w-full outline-none bg-[#2400FF] p-4 mb-3 cursor-pointer hover:opacity-80"  type="submit" value="Login"/>
+                   <input  className="font-bold text-[#fff] rounded w-full outline-none bg-[#2400FF] p-4 mb-3 cursor-pointer hover:opacity-80"  type="submit" value="Connecter"/>
                </div>
                
 
               <div className=" w-5/6 flex items-center justify-start mb-2 ">
               <input className="w-5 h-5 flex items-center" type="checkbox" id="rememberme" name="rememberme" value="rememberme"/>
-              <label className=" w-fit text-sm ml-3  flex items-center" for="rememberme">Keep me logged</label>
+              <label className=" w-fit text-sm ml-3  flex items-center" for="rememberme">Gardez-moi connecté</label>
               </div>
               {error && <div className="w-5/6 mb-3 flex items-center justify-center">
-                   <h1 className="text-[#FF0000] text-lg">Oops faux mot de passe</h1>
+                   <h1 className="text-[#FF0000] text-lg">Oops mauvais mot de passe</h1>
                </div>}
            </form>
            </div>
            <div>
-                <h2>Don't have an account? <a className="font-bold text-[#2400FF]" href="/register">Register</a></h2>
+                <h2>Vous êtes confronté à un problème ?<a className="font-bold text-[#2400FF]" href="mailto:ne.chenni@gmail.com"> contacter l'administrateur</a></h2>
            </div>
         </div>
     </div>
