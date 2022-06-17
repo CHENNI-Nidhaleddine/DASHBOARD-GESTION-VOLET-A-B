@@ -51,11 +51,6 @@ function Employes(){
     }
     useEffect(()=>{
       try {
-        // console.log("object")
-        // const res = await axios.get("/circuits/getAll");
-        
-        //  setStaticCircuits(res.data.Circuits);
-        //  console.log(staticCircuits)
         setInterval(() => {
           getEmployees()
         },100);
@@ -116,18 +111,6 @@ return (
                    setVisible(!visible)}
                    }>{visible? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}</button>
                </div>
-{/* <div className="  w-5/6 mb-8">
-    <input className={match? "rounded  w-full outline-none border-2 border-[#C4C4C4] p-4 pr-12":"rounded  w-full outline-none border-2 border-[#FF0000] p-4 pr-12"} type="password" placeholder="Confirm Password" ref={cpasswordRef}  onChange={(e)=>{
-     {console.log(e.target.value,passwordRef.current.value)}
-     if (e.target.value!==passwordRef.current.value){
-        
-        setMatch(false)
-      }else{
-        setMatch(true)
-      }
-    }} />
-
-</div> */}
 
 
 <div className="w-5/6 mb-3 mt-3">
@@ -140,7 +123,7 @@ return (
 
 
 </form>
-        <FaWindowClose onClick={()=>setCreate(false)} className="absolute text-2xl top-2 right-2 text-[#2400ff] " />
+        <FaWindowClose onClick={()=>setCreate(false)} className="cursor-pointer hover:text-[#f00] absolute text-2xl top-2 right-2 text-[#2400ff] " />
       </div>
       
     </div>

@@ -22,11 +22,13 @@ router.post("/create", async (req, res) => {
     
     //create new Circuit
     const newCircuit = new Circuit({
+      title: req.body.title,
       place: req.body.place,
       type: req.body.type,
       duration: req.body.duration,
       visitors: req.body.visitors,
-      markers: req.body.markers   
+      markers: req.body.markers,
+      description :req.body.description
     });
     console.log(newCircuit)
     //save user and respond

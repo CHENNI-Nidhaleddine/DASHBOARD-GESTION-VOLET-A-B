@@ -20,6 +20,7 @@ const CircuitSchema = new mongoose.Schema(
   {
     visitors: {
       type: Number,
+      default:0,
     },
     title:{
       type: String,
@@ -27,11 +28,16 @@ const CircuitSchema = new mongoose.Schema(
     place: {
         type: String,
       },
-    type: {
+    type: [{
       type: String,
-    },
+    }],
     duration: {
       type: String,
+      default:0
+    },
+    description:{
+      type: String,
+      default:""
     },
     markers: [{
                 lat: {type: Number},

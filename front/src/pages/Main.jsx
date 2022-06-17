@@ -47,7 +47,7 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
                                 <li className={openTab==2? "text-[#000] w-full cursor-pointer flex items-center justify-center text-2xl py-5 border-l-8 border-[#000]":"cursor-pointer flex items-center justify-center text-2xl py-5"}>
                                     <a    onClick={e => {
                                     e.preventDefault();
-                                    setSection("Cartes")
+                                    setSection("Lieux")
                                     setOpenTab(2);
                                 }}
                                 data-toggle="tab"
@@ -73,6 +73,15 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
                                 data-toggle="tab"
                                 href="#link4"
                                 role="tablist" className="flex items-center">  <GoGistSecret  className="mr-3"/><span>Employés</span></a></li>}
+ <li className={openTab==5? "text-[#000] w-full cursor-pointer flex items-center justify-center text-2xl py-5 border-l-8  border-[#000]":"cursor-pointer flex items-center justify-center text-2xl py-5"}>
+                                                <a    onClick={e => {
+                                    e.preventDefault();
+                                    // setSection("Gestion utilisateurs")
+                                    // setOpenTab(5);
+                                }}
+                                data-toggle="tab"
+                                href="#link5"
+                                role="tablist" className="flex items-center">  <FiActivity  className="mr-3"/><span>Activité</span></a></li>
 
                             </ul>
                             
@@ -106,6 +115,7 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
                     <Employes/>
 
                     </div>}
+      
                    
                 </div>
                 </div>
