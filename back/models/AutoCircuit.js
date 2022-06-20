@@ -16,7 +16,7 @@
 
 const mongoose = require("mongoose");
 
-const CircuitSchema = new mongoose.Schema(
+const AutoCircuitSchema = new mongoose.Schema(
   {
     visitors: {
       type: Number,
@@ -51,4 +51,4 @@ const CircuitSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Circuit", CircuitSchema);
+module.exports = mongoose.model("AutoCircuit", AutoCircuitSchema);

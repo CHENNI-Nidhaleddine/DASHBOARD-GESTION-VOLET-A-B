@@ -5,6 +5,7 @@ import {BsPlusLg} from "react-icons/bs"
 import {BiFilter} from "react-icons/bi"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {AiFillStar} from "react-icons/ai"
+import rihlati from "../assets/rihlati.png"
 function Cartes(){
 
     const [show,setShow]=useState(false)
@@ -15,8 +16,7 @@ function Cartes(){
       });
    
       const [center,setCenter]=useState( [{
-        lng:5.4108,
-         lat:36.1898
+        lat:36.76834017603671, lng:3.046707319992525
        },
        {
         lng:5.4101,
@@ -30,14 +30,33 @@ function Cartes(){
     return (
         <div className="relative bg-[#333] w-full h-[calc(100vh-140px)] flex flex-col items-center justify-center mt-[calc(100px)] " >
  
- <GoogleMap zoom={10} center={center[0]} mapContainerClassName=" w-full h-full" >
+ <GoogleMap zoom={16} center={center[0]} mapContainerClassName=" w-full h-full" >
+ <img src={rihlati} className="bg-[#fff] rounded p-1 shadow-xl absolute bottom-0 left-0  w-[80px] mx-2 my-1 h-[40px]" alt=""/>
+ {/* Parc beytouth */}
+ <Marker position={{lat:36.76834017603671, lng:3.046707319992525}} anchor="center" icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}
+ ></Marker>
+ {/* Constantine */}
+ <Marker position={{lat:36.38346730335037, lng:6.612783848407775}} anchor="center" icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}  ></Marker>
+ {/* Grande mosque */}
+ <Marker position={{lat:36.73499739465522, lng:3.14181085710423}} anchor="center" icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}  ></Marker>
+{/* notre-dame */}
+ <Marker position={{lat:36.80106361436944, lng:3.042561701326816}} anchor="center" icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}  ></Marker>
+{/* Jardin d'essai */}
+ <Marker position={{lat:36.74948470933547, lng:3.074556545517744}} anchor="center" icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}  ></Marker>
+
+ 
  <div className="absolute bottom-5 w-full px-2 pr-16">
         <Swiper watchSlidesProgress={true} slidesPerView={4} className="mySwiper"  >
-        {/* <span slot="container-start">Container Start</span>
- <span slot="container-end">Container End</span>
- <span slot="wrapper-start">Wrapper Start</span>
- <span slot="wrapper-end">Wrapper End</span> */}
-       <SwiperSlide className="relative  mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
+       <SwiperSlide 
+       onClick={()=>
+       setCenter( [{
+        lat:36.76834017603671, lng:3.046707319992525
+       },
+       {
+        lng:5.4101,
+         lat:35.1898
+       }])}
+    className="relative  mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className=" shadow-3xl relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(230px)] h-[calc(280px)] mx-5 rounded-xl shadow-2xl  ">
           <div className=" flex flex-col  self-start">
             <div className=" p-1 flex items-center justidy-center text-lg bg-[#fff] rounded absolute top-2 left-2">
@@ -54,7 +73,16 @@ function Cartes(){
           <button className=" absolute bottom-3 bg-[#2400FF] text-[#fff] text-xl w-5/6 py-1 rounded-xl">Plus</button>
         </div>
        </SwiperSlide>
-       <SwiperSlide className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
+       <SwiperSlide
+         onClick={()=>
+          setCenter( [{
+            lat:36.38346730335037, lng:6.612783848407775
+          },
+          {
+           lng:5.4101,
+            lat:35.1898
+          }])}
+        className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className=" shadow-3xl relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(230px)] h-[calc(280px)] mx-5 rounded-xl shadow-2xl  ">
           <div className=" flex flex-col  self-start">
           <div className=" p-1 flex items-center justidy-center text-lg bg-[#fff] rounded absolute top-2 left-2">
@@ -70,7 +98,16 @@ function Cartes(){
           <button className=" absolute bottom-3 bg-[#2400FF] text-[#fff] text-xl w-5/6 py-1 rounded-xl">Plus</button>
         </div>
        </SwiperSlide>
-       <SwiperSlide className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
+       <SwiperSlide 
+         onClick={()=>
+          setCenter( [{
+            lat:36.73499739465522, lng:3.14181085710423 
+          },
+          {
+           lng:5.4101,
+            lat:35.1898
+          }])}
+       className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className=" shadow-3xl relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(230px)] h-[calc(280px)] mx-5 rounded-xl shadow-2xl  ">
           <div className=" flex flex-col  self-start">
           <div className=" p-1 flex items-center justidy-center text-lg bg-[#fff] rounded absolute top-2 left-2">
@@ -86,7 +123,16 @@ function Cartes(){
           <button className=" absolute bottom-3 bg-[#2400FF] text-[#fff] text-xl w-5/6 py-1 rounded-xl">Plus</button>
         </div>
        </SwiperSlide>
-       <SwiperSlide className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
+       <SwiperSlide
+         onClick={()=>
+          setCenter( [{
+            lat:36.80106361436944, lng:3.042561701326816
+          },
+          {
+           lng:5.4101,
+            lat:35.1898
+          }])}
+           className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className=" shadow-3xl relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(230px)] h-[calc(280px)] mx-5 rounded-xl shadow-2xl  ">
           <div className=" flex flex-col  self-start">
           <div className=" p-1 flex items-center justidy-center text-lg bg-[#fff] rounded absolute top-2 left-2">
@@ -102,7 +148,16 @@ function Cartes(){
           <button className=" absolute bottom-3 bg-[#2400FF] text-[#fff] text-xl w-5/6 py-1 rounded-xl">Plus</button>
         </div>
        </SwiperSlide>
-       <SwiperSlide className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
+       <SwiperSlide 
+         onClick={()=>
+          setCenter( [{
+            lat:36.74948470933547, lng:3.074556545517744
+          },
+          {
+           lng:5.4101,
+            lat:35.1898
+          }])}
+           className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className=" shadow-3xl relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(230px)] h-[calc(280px)] mx-5 rounded-xl shadow-2xl  ">
           <div className=" flex flex-col  self-start">
           <div className=" p-1 flex items-center justidy-center text-lg bg-[#fff] rounded absolute top-2 left-2">
@@ -119,11 +174,19 @@ function Cartes(){
         </div>
        </SwiperSlide>
       
-       <SwiperSlide className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
+       <SwiperSlide 
+         onClick={()=>
+          setCenter( [{
+           lng:5.4108,lat:36.1898
+          },
+          {
+           lng:5.4101,
+            lat:35.1898
+          }])}
+           className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className="  relative flex flex-col items-center justify-left  z-50  w-[calc(200px)] h-[calc(200px)] mx-5   ">
            </div>
        </SwiperSlide>
-      {/* <SwiperSlide className="relative z-0 mx-5  cursor-pointer h-44 rounded flex items-center justify-center"><img src={slide7} className="w-44 h-44" alt=""/></SwiperSlide> */}
      </Swiper>
      </div>
       
@@ -148,87 +211,3 @@ function Cartes(){
     )}
 }
 export default Cartes
-// import { useNavigate } from 'react-router-dom';
-
-// import React, { useRef, useEffect, useState } from 'react';
-
-// import Map, {FullscreenControl, Marker,ScaleControl} from 'react-map-gl';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'mapbox-gl/dist/mapbox-gl.css';
-
-// // import { MapContainer } from './MapContainer';
-// import { GoogleMap, LoadScript } from '@react-google-maps/api';
-// import {FiSearch} from "react-icons/fi"
-// import {BsPlusLg} from "react-icons/bs"
-// import 'swiper/css';
-// import StaticCircuits from '../components/StaticCircuits';
-// import AutoCircuits from '../components/AutoCircuits';
-// import {BiFilter} from "react-icons/bi"
-// // import maplibregl from 'maplibre-gl';
-// const MAPBOX_TOKEN = 'pk.eyJ1IjoibmlkaGFsY2giLCJhIjoiY2wzaGF0amt5MGU4aTNibnhyb2p2Zmh1dyJ9.yxiGunHG-zwNsWHo917y_Q'; // Set your mapbox token here
-// // import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
- 
-// // mapboxgl.accessToken = 'pk.eyJ1IjoibmlkaGFsY2giLCJhIjoiY2wzaGF0amt5MGU4aTNibnhyb2p2Zmh1dyJ9.yxiGunHG-zwNsWHo917y_Q'; // Set your mapbox token here
-
-
-// function Cartes(){
-//     const [show,setShow]=React.useState(false)
-//     const [viewState, setViewState] = React.useState({
-//         longitude: 5.4108,
-//         latitude: 36.1897,
-//         zoom: 14
-//       });
-   
-//     //   latitude:  36.1898,
-//     //   longitude: 5.4108,
-//     //   zoom: 14
-//     return (
-//         <div className="relative bg-[#333] w-full h-[calc(100vh-140px)] flex flex-col items-center justify-center mt-[calc(100px)] " >
- 
-//         <Map
-//            onStyleLoad={(map)=>console.log(map)}
-//            onClick={()=>console.log("click")}
-          
-//            {...viewState}
-//            onMove={evt => {setViewState(evt.viewState);}}
-//         mapboxAccessToken={MAPBOX_TOKEN}
-//          mapStyle="mapbox://styles/mapbox/streets-v9"
-             
-//       style={{width: '100%', height: '100%'}}
-   
-    
-  
-//   >
-//        <Marker longitude={viewState.longitude} latitude={viewState.latitude} anchor="center" color="#00f" onClick={()=>setShow(!show)}>
-//        {show && <div className=" z-50 absolute  bottom-8 left-5 w-24 h-24 bg-[#fff]">kkkkk</div>}
-
-    
-//   </Marker>
-//   <Marker longitude={6.4108} latitude={36.1898} anchor="center" color="#00f">
-  
-    
-//   </Marker>
-//   <Marker longitude={5.6108} latitude={35.9898} anchor="center" color="#00f">
-//       <div className="hover:block hidden z-50 relative w-24 h-24 bg-[#fff]">kkkkk</div>
-    
-//   </Marker>
-//        <div className="relative w-1/3">
-//            <input type="text" name="" id="" className="absolute top-5 border-2 border-[#c4c4c4] left-5 z-30 outline-none rounded-xl w-full py-2 text-lg pl-3 pr-16" placeholder="Recherche Lieux, Monuments..."/>
-//            <FiSearch className="absolute right-0 top-6 text-[#c4c4c4] z-50 text-3xl"/>
-//        </div>
-//        <button className="absolute flex items-center justify-center  w-fit h-fit top-5 left-80
-//            font-bold bg-[#FFF] text-[#2400ff] border-2 border-[#2400ff] w-fit py-2 px-2  mr-2 ml-56 rounded-lg  text-lg">
-//              <span>Filter</span>
-//              <BiFilter className="text-3xl ml-1"/>
-//        </button>
-//        <button className="absolute flex items-center justify-center  w-fit h-fit top-5 right-10
-//            font-bold bg-[#2400ff] text-[#fff] border-2 border-[#2400ff] w-fit py-2 px-2  mr-2 ml-56 rounded-lg  text-lg">
-//              <span>Ajouter</span>
-//              <BsPlusLg className="text-xl ml-1"/>
-//        </button>
-//           <FullscreenControl />
-//       </Map>  
-//   </div>
-//     )
-// }
-// export default Cartes

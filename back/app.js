@@ -33,6 +33,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/employee");
 const circuitsRoute = require("./routes/circuits");
+const autoCircuitsRoute = require("./routes/autoCircuits");
 var cors = require('cors');
 
 dotenv.config();
@@ -51,7 +52,7 @@ mongoose
 
 app.use("/api/employee", userRoute);
 app.use("/api/circuits", circuitsRoute);
-
+app.use("/api/autoCircuits", autoCircuitsRoute);
 app.listen(8800, () => {
   console.log("Backend server is running!");
 });

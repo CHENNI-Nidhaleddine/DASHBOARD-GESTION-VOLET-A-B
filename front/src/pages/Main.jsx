@@ -1,6 +1,5 @@
 import React from "react"
 import logo from "../assets/logo.png"
-import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 import { useNavigate } from 'react-router-dom';
 import {BsBoxArrowRight} from "react-icons/bs"
 import {RiHomeLine} from "react-icons/ri"
@@ -10,14 +9,11 @@ import {FiActivity} from "react-icons/fi"
 import {GoGistSecret} from "react-icons/go"
 import {HiLocationMarker} from "react-icons/hi"
 import Acceuil from "../sections/Acceuil";
-// import Cartes from "../sections/Cartes";
 import Circuits from "../sections/Circuits";
 import Activite from "../sections/Activite";
 
 import Cartes from "../sections/Cartes";
-import Test from "../sections/Test";
 import Employes from "../sections/Employes";
-//AIzaSyAXKllRijHsY36D-Qhb503w4EeQ7SioLAI
 
 function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits}){
    
@@ -76,8 +72,8 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
  <li className={openTab==5? "text-[#000] w-full cursor-pointer flex items-center justify-center text-2xl py-5 border-l-8  border-[#000]":"cursor-pointer flex items-center justify-center text-2xl py-5"}>
                                                 <a    onClick={e => {
                                     e.preventDefault();
-                                    // setSection("Gestion utilisateurs")
-                                    // setOpenTab(5);
+                                    setSection("Gestion utilisateurs")
+                                    setOpenTab(5);
                                 }}
                                 data-toggle="tab"
                                 href="#link5"
@@ -96,7 +92,7 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
        
                 <div className="absolute top-0 w-full h-[calc(100px)] flex items-center justify-between py-4 px-10 text-2xl bg-[#fff]">
                             <h1 className="font-bold text-3xl">{section}</h1>
-                            <h1 className="flex items-center justify-center"><span>Mr {userConnected.firstName}</span><BiUserCircle className="text-5xl ml-3"/></h1>
+                            <h1 className="flex items-center justify-center"><span>{userConnected.firstName}</span><BiUserCircle className="text-5xl ml-3"/></h1>
                 </div>
             
             <div className="px-4 py-5 w-full h-full">
@@ -104,6 +100,7 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
                     <div className={openTab === 1 ? "block " : "hidden"} id="link1">
                       <Acceuil/>
                     </div>
+                  
                     <div className={openTab === 2 ? "block  " : "hidden"} id="link2">
                    <Cartes/>
                     </div>
@@ -111,11 +108,13 @@ function Main({userConnected,setUserConnected,staticCircuits,setStaticCircuits})
                     <Circuits userConnected={userConnected} staticCircuits={staticCircuits} setStaticCircuits={setStaticCircuits}/>
                     </div>
                     {userConnected.admin &&  <div className={openTab === 4 ? "block " : "hidden"} id="link4">
-                    {/* <Activite /> */}
+                
                     <Employes/>
 
                     </div>}
-      
+                    <div className={openTab === 5 ? "block " : "hidden"} id="link5">
+                    <Activite />
+                    </div>
                    
                 </div>
                 </div>

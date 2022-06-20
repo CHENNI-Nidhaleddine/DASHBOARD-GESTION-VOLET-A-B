@@ -12,7 +12,7 @@ function AutoCircuits(){
  <span slot="container-end">Container End</span>
  <span slot="wrapper-start">Wrapper Start</span>
  <span slot="wrapper-end">Wrapper End</span> */}
-       <SwiperSlide className="relative  mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
+       {/* <SwiperSlide className="relative  mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className=" border-4 border-[#2400ff] relative flex flex-col items-center justify-left bg-[#fff] z-50  w-[calc(200px)] h-[calc(200px)] mx-5 rounded-xl shadow-2xl  ">
           <div className="flex flex-col p-5 self-start">
           <h1 className="font-bold text-2xl">Alger</h1>
@@ -81,7 +81,7 @@ function AutoCircuits(){
        <SwiperSlide className="relative z-0 mx-2  cursor-pointer h-fit w-fit rounded flex items-center justify-center">
        <div className="  relative flex flex-col items-center justify-left  z-50  w-[calc(200px)] h-[calc(200px)] mx-5   ">
            </div>
-       </SwiperSlide>
+       </SwiperSlide> */}
       {/* <SwiperSlide className="relative z-0 mx-5  cursor-pointer h-44 rounded flex items-center justify-center"><img src={slide7} className="w-44 h-44" alt=""/></SwiperSlide> */}
      </Swiper>
      </div>

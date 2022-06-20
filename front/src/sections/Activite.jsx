@@ -46,72 +46,11 @@ function Activite({mapContainer}){
     const position = [51.505, -0.09]
     return (
     <div className="relative w-full  flex flex-col items-center justify-center h-[calc(100vh-150px)] mt-[calc(100px)] bg-[@111] " >
-        {/* <MapContainer center={[36.1898, 5.4108]} zoom={13}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
 
-</MapContainer> */}
-{/* <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken={MAPBOX_TOKEN }
-        width="100vw"
-        height="80vh"
-        transitionDuration="200"
-        mapStyle="mapbox://styles/safak/cknndpyfq268f17p53nmpwira"
-        onViewportChange={(viewport) => setViewport(viewport)}
-        // onDblClick={currentUsername && handleAddClick}
-      ></ReactMapGL> */}
-     <MapContainer center={center} zoom={13} scrollWheelZoom={false} style={{ width: '100%', height: '600px' }}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      ref={mapRef}
-    
-    //    { 
-    //     const map = this.mapRef.current.leafletElement; 
-    //     setTimeout(() => { 
-    //         map.invalidateSize(); 
-    //     }, 250); 
-    // } 
-    />
-          <Marker position={[36.1898,5.4101]} >
-          <FaMapMarkerAlt className="absolute text-[#00f] text-3xl"/>
-      <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
-      </Popup>
-    </Marker>
-      {markers.forEach( (m)=>{
-      {console.log(m.longitude)} 
-       <Marker position={[m.longitude,m.latitude]} >
-            {/* <FaMapMarkerAlt className="absolute text-[#00f] text-3xl"/> */}
-            <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
-      </Popup>
-    </Marker>
-    })}
-     </MapContainer>
-    {/* <MapWithPoems/> */}
-    {/* <Marker position={position}>
-      <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
-      </Popup>
-    </Marker> */}
- 
-{/* <MapBox/> */}
 
-  {/* <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  {/* <Marker position={[51.505, -0.09]}>
-    <Popup>
-      A pretty CSS3 popup. <br /> Easily customizable.
-    </Popup>
-  </Marker> */}
-{/* </MapContainer>  */}
+<h1 className="text-xl font-[#000] opacity-80">Prochainement</h1>
+{/* <iframe src="https://giphy.com/embed/7AWi4pj8P0MQU" width="338" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> */}
+
     </div>
     )
 };
